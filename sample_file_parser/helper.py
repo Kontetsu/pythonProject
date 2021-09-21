@@ -16,7 +16,14 @@ def create_and_fill_specified_number_of_lines(name, number_of_lines):
 
 def check_file_content(name, string_to_search):
     # Read the file
+    elements = 0
+    dikt = {string_to_search: elements}
     with open(name, 'r') as f:
         for line in f.readlines():
             if string_to_search in line.strip():
-                print(line)
+                # print(line)
+                dikt[string_to_search] += 1     # elements += 1
+
+    return "There are {} {} messages in {}".format(dikt[string_to_search],
+                                                   string_to_search,
+                                                   name)
